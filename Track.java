@@ -15,8 +15,7 @@ class Track {
     /** Returns this track's data as "artist, title, minutes:seconds".
      *  For example, "John Lennon, Imagine, 3:07" */
     public String toString() {
-        //// Replace the following statement with code that returns
-        //// the data of this track according to the method's documentation.
+        String duration = formattedDuration(getDuration()); 
         return artist + ", " + title + ", " + duration;
     }
 
@@ -36,13 +35,23 @@ class Track {
     /** If this track's duration is shorter than the other track's duration
      *  returns true; otherwise returns false. */
     public boolean isShorterThan(Track other) {
-        return duration < other.duration;
+        int originalTrack = this.duration;
+        int otherTrack = other.getDuration(); 
+        return originalTrack < otherTrack;
     }
 
-    // Returns a string that represents the totalSeconds as "minutes:seconds",
-    // Where seconds is always two digits. For example, "3:17" or "12:05".
+
     private String formattedDuration(int totalSeconds) {
-        //// replace the following statement with your code
-        return "";
+        /// In this code our main challenge is to switch the time unit from seconds to minutes and seconds
+        /// First we will calculate the integers of mintues and seconds. 
+        /// Next, we want to assert sensible formatting, therefore we will divide to 2 cases: 
+        /// If the track duration has a value of less than 10- we will add a 0 to the formatting and after that concatenate the int
+        /// If the track duration has a value of 10 or greater- we will use the formatting supplied by the course staff  
+        int secondsDuration = totalSeconds % 60;   
+        int minutesDuration = totalSeconds / 60;
+        if (secondsDuration < 10) {
+            return "" + minutesDuration + ":0" + secondsDuration; 
+        }
+        return "" + minutesDuration + ":" + secondsDuration;
     }
 }

@@ -35,15 +35,33 @@ class PlayList {
      *  If the list is full, does nothing and returns false.
      *  Otherwise, appends the track and returns true. */
     public boolean add(Track track) {
-        //// replace the following statement with your code
+        /// First we will deal with the case that the playlist is full- in this case the method will return false
+        if (this.size == this.maxSize) {
+            return false; 
+        } 
+        else if (this.size == 0) {
+            tracks[0] = track;   
+        } 
+        else if (this.size < this.maxSize) {
+            tracks[this.size] = track;
+        }
+        /// If the playlist isn't full, we will add the input track to the track list in the last place
+        /// We will also have to update the size value of the playlist- and increase it by one track  
+        this.size = this.size + 1; 
         return true;
     }
 
-    /** Returns the data of this list, as a string. Each track appears in a separate line. */
-    //// For an efficient implementation, use StringBuilder.
+
     public String toString() {
-        //// replace the following statement with your code
-        return "";
+        /// Using StringBuilder we will create the return string in increments
+        /// Using a loop we will go over all of the songs and add the track info to our string, and add a new line
+        /// In the end we will return the string we've built as a string, rather than a StringBuilder object
+        StringBuilder ansString = new StringBuilder();
+        ansString.append("\n");  
+        for (int i = 0; i < size; i ++) {
+            ansString.append(tracks[i].toString() + "\n");
+        }
+        return ansString.toString();
     }
 
     /** Removes the last track from this list. If the list is empty, does nothing. */
