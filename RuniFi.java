@@ -31,13 +31,13 @@ class RuniFi {
         myList.add(1, track5);
         display("After adding Yesterday at location 1", myList);
 
-        // // Tests the ability to find the locations of track titles
-        // System.out.println("\nIndex of Creep: " + myList.indexOf("Creep"));
-        // System.out.println("\nIndex of Shake It Off: " + myList.indexOf("Shake It Off"));
+        // Tests the ability to find the locations of track titles
+        System.out.println("\nIndex of Creep: " + myList.indexOf("Creep"));
+        System.out.println("\nIndex of Shake It Off: " + myList.indexOf("Shake It Off"));
 
-        // // Removes some tracks
-        // myList.remove(2);
-        // display("After removing the track in location 2", myList);
+        // Removes some tracks
+        myList.remove(2);
+        display("After removing the track in location 2", myList);
 
         // myList.removeFirst();
         // display("After removing the first track", myList);

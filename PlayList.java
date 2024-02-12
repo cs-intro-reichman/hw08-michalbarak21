@@ -146,14 +146,42 @@ class PlayList {
      *  If the list is empty, or the given index is negative or too big for this list, 
      *  does nothing and returns -1. */
     public void remove(int i) {
-        //// replace this comment with your code
+        /// We will start with the cases where the function returns -1
+        if (this.size == 0 || this.size < 0 || this.size > this.maxSize) {
+            System.out.println(-1); 
+        } 
+        /// Next we will deal with the cases where a song is actually deleted: 
+        /// First we will remove the song from the given idx
+        /// Next we will shift all of the other songs to the left
+        tracks[i] = null; 
+        for (int j = i; j < this.size; j++) {
+            tracks[j] = tracks[j+1]; 
+        }
+        this.size-- ;
+
     }
 
     /** Removes the first track that has the given title from this list.
      *  If such a track is not found, or the list is empty, or the given index
      *  is negative or too big for this list, does nothing. */
     public void remove(String title) {
-        //// replace this comment with your code
+        /// First we will deal with the cases where the function does nothing
+        if (this.size == 0) {
+            
+        } 
+        /// Next we will create a loop that goes over all the tracks in the playlist
+        /// if the given title matches the title of a track on the playlist- we remove it
+        /// if the title doesn't match any track on the playlist- we do nothing
+        else {
+            for (int i = 0; i < this.size; i++) {
+                if (tracks[i].equals(title)) {
+                    if (i > 0 && i < this.maxSize){
+                        remove(i);
+                    }
+                }
+            }
+
+        }
     }
 
     /** Removes the first track from this list. If the list is empty, does nothing. */
