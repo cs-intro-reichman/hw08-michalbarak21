@@ -143,10 +143,10 @@ class PlayList {
         //// Then we will add the new song to our 'hole'
         if (i > 0 || i < this.maxSize) {
             if (this.size < this.maxSize) {
-                for (int r = this.size; r >= i; r--) {
+                for (int r = this.size; r >= i-1; r--) {
                     tracks[r+1] = tracks[r];
                 }
-                tracks[i] = track; 
+                tracks[i-1] = track; 
                 this.size++ ;
                 return true; 
             }

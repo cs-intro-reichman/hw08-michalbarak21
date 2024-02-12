@@ -30,10 +30,6 @@
             "request": "launch",
             "mainClass": "PlayListTester",
             "projectName": "hw08-michalbarak21_42fb8180"
-            "args": [
-                "getSize"
-
-            ]
         },
         {
             "type": "java",
