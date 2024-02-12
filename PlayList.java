@@ -47,32 +47,47 @@ class PlayList {
         }
         /// If the playlist isn't full, we will add the input track to the track list in the last place
         /// We will also have to update the size value of the playlist- and increase it by one track  
-        this.size = this.size + 1; 
+        this.size++ ; 
         return true;
     }
 
 
     public String toString() {
         /// Using StringBuilder we will create the return string in increments
-        /// Using a loop we will go over all of the songs and add the track info to our string, and add a new line
+        /// Using a loop we will go over all of the songs and add the track info to our string
         /// In the end we will return the string we've built as a string, rather than a StringBuilder object
         StringBuilder ansString = new StringBuilder();
-        ansString.append("\n");  
         for (int i = 0; i < size; i ++) {
-            ansString.append(tracks[i].toString() + "\n");
+            ansString.append("\n"); 
+            ansString.append(tracks[i].toString());
         }
         return ansString.toString();
     }
 
     /** Removes the last track from this list. If the list is empty, does nothing. */
      public void removeLast() {
-        //// replace this comment with your code
+        //// First we will deal with the case that the tracklist is empty
+        if (this.size == 0) {
+            
+        }
+        else { 
+            tracks[this.size] = null; 
+            this.size = this.size - 1; 
+        }
     }
     
     /** Returns the total duration (in seconds) of all the tracks in this list.*/
     public int totalDuration() {
-        //// replace the following statement with your code
-        return 0;
+        /// to calculate the length of the playlist we will use a loop to go over each song, add it's duration and return the sum. 
+        int sumDuration = 0; 
+        if (this.size == 0) {
+            return 0; 
+        } else { 
+            for (int i = 0; i < this.size; i++) {
+                sumDuration = sumDuration + tracks[i].getDuration(); 
+            }
+        }
+        return sumDuration;
     }
 
     /** Returns the index of the track with the given title in this list.
@@ -89,6 +104,32 @@ class PlayList {
      *  is full, does nothing and returns false. Otherwise, inserts the track and
      *  returns true. */
     public boolean add(int i, Track track) {
+        //// To start we will deal with the easier cases- that the playlist is empty & that the track is added to the last place
+        if (this.size == 0) {
+            tracks[0] = track; 
+            this.size++ ;  
+            return true; 
+        }
+        if (this.size == i + 1) {
+            tracks[i + 1] = track; 
+            this.size++ ;
+            return true;
+        }
+        //// We will start by checking that th conditions for adding a track to the playlist apply: 
+        //// The playlist isn't full + the idx given is valid
+        //// If both conditions apply then we can add songs to the playlist
+        //// First we will want to shift all of the songs that come after the given idx one place to the right
+        //// Then we will add the new song to our 'hole'
+        if (i > 0 || i < this.maxSize) {
+            if (this.size < this.maxSize) {
+                for (int r = this.size; r >= i; r--) {
+                    tracks[r+1] = tracks[r];
+                }
+                tracks[i] = track; 
+                this.size++ ;
+                return true; 
+            }
+        }
         //// replace the following statement with your code
         return false;
     }
