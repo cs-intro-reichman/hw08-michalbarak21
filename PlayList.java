@@ -93,7 +93,15 @@ class PlayList {
     /** Returns the index of the track with the given title in this list.
      *  If such a track is not found, returns -1. */
     public int indexOf(String title) {
-        //// replace the following statement with your code
+        /// To check if a song is in the playlist we will go over all of the songs in the playlist and check if their title matches
+        /// the given title. 
+        /// If it does - return the idx of the track
+        /// If it doesn't - return -1  
+        for (int i = 0; i < this.size; i++) {
+            if (title.equals(tracks[i].getTitle())) {
+                return i;
+            }
+        }
         return -1;
     }
 
