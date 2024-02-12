@@ -154,7 +154,6 @@ class PlayList {
         //// replace the following statement with your code
         return false;
     }
-    }
      
 
 
@@ -278,13 +277,13 @@ class PlayList {
      *  durations will appear first. The sort is done in-place. In other words,
      *  rather than returning a new, sorted playlist, the method sorts
      *  the list on which it was called (this list). */
-    public void sortedInPlace() {
+    public void sortedInPlace() {  
         int idx = 0; 
         for (int i = 0; i < this.size; i++) {
             idx = minIndex(i); 
             Track temp = tracks[i];
-            tracks[i] = tracks[idx];
-            tracks[idx] = temp;    
+            tracks[i] = tracks[idx]; 
+            tracks[idx] = temp;                              
             }
         }
         // Uses the selection sort algorithm,  
