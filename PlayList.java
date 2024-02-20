@@ -131,7 +131,7 @@ class PlayList {
             this.size++ ;  
             return true; 
         }
-        if (this.size == i + 1) {
+        if (this.size == i + 1) { // you didnt check here if the i < this.maxSize
             tracks[i + 1] = track; 
             this.size++ ;
             return true;
@@ -141,7 +141,10 @@ class PlayList {
         //// If both conditions apply then we can add songs to the playlist
         //// First we will want to shift all of the songs that come after the given idx one place to the right
         //// Then we will add the new song to our 'hole'
-        if (i > 0 || i < this.maxSize) {
+        if (i > 0 || i < this.maxSize) { /* why 'or'? I think it should be 'and' 
+            because if i = -1 then i < this.maxSize and we will enter the if because you used 'or
+            */
+            
             if (this.size < this.maxSize) {
                 for (int r = this.size; r >= i; r--) {
                     tracks[r+1] = tracks[r];
@@ -163,7 +166,8 @@ class PlayList {
     public void remove(int i) {
         /// We will start with the cases where the function returns -1
         if (this.size == 0 || this.size < 0 || this.size > this.maxSize) {
-            System.out.println(-1); 
+            System.out.println(-1);
+            //This function is void, it does not return anything and you shouldn't have printed -1, how does this help the user?
         } 
         /// Next we will deal with the cases where a song is actually deleted: 
         /// First we will remove the song from the given idx
@@ -184,7 +188,7 @@ class PlayList {
     public void remove(String title) {
         /// First we will deal with the cases where the function does nothing
         if (this.size == 0) {
-            
+            // then what? 
         } 
         /// Next we will create a loop that goes over all the tracks in the playlist
         /// if the given title matches the title of a track on the playlist- we remove it
@@ -207,7 +211,7 @@ class PlayList {
     public void removeFirst() {
         /// First we will deal with the cases where the function does nothing
         if (this.size == 0) {
-            
+            // then what?
         } else {
         /// Next we will remove the first song from the playlist and shift all of the songs to the left 
             tracks[0] = null; 
