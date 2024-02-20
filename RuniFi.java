@@ -2,6 +2,7 @@
 class RuniFi {
     
     public static void main(String[] args) {
+
         // Creates a play list with a maximum capacity of 10 tracks
         // (small maximum capacity is good for testing purposes)
         PlayList myList = new PlayList(10);
